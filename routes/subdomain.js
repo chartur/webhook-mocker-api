@@ -28,8 +28,13 @@ router.all("*", async (req, res, next) => {
   let contentType;
   if(headerContentType) {
     contentType = headerContentType.split('/')[1];
-    if(contentType === "javascript") {
-      contentType = "js";
+    switch (contentType) {
+      case "javascript":
+        contentType = "js";
+        break;
+      case "plain":
+        contentType = "text";
+        break;
     }
   }
 
